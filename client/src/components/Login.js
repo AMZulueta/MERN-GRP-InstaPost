@@ -53,12 +53,12 @@ const Login = (props) => {
                         onChange={(e) => setLoginPw(e.target.value)}
                         type="password"
                         value={loginPw}
-                        name="email"
+                        name="password"
                     />
                 </div>
                 
                 <div>
-                    <input className="Create" type="submit" value="Submit" />
+                    <input className="Login__button" type="submit" value="Submit" />
                 </div>
            </form>
            <Link className="button__ToRegistration" to="/Registration">Register</Link>
