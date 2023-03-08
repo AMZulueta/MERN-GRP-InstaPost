@@ -97,7 +97,7 @@ const Registration = (props) => {
             </form>
         </div>
       </div>
-);
+    );
 };
 
 export default Registration;
