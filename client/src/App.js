@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
+import Login from './component/Login';
+import Registration from './component/Registration';
 import './App.css';
 
 function App() {
