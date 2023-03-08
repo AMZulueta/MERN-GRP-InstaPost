@@ -37,7 +37,7 @@ const Login = (props) => {
         <Link className="button__ToRegistration" to="/Registration">Register</Link>
         <form onSubmit={onSubmitLoginHandler} className="loginform">
                 
-                <div  className="email__container">
+                <div>
                     <label>Email:*</label>
                     <input
                         onChange={(e) => setLoginEmail(e.target.value)}
