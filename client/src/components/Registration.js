@@ -27,6 +27,7 @@ const Registration = (props) => {
         .then((res) => {
             console.log(res);
             console.log(res.data.newUser);
+            navigate("/");
 
     })
         .catch((err) => {
@@ -35,10 +36,11 @@ const Registration = (props) => {
         
         });
     };
+    
   return (
     <div>
         <div className="reg__container">
-            <Link className="button__ToLogin" to="/Login">Login</Link>
+            <Link className="button__ToLogin" to="/">Login</Link>
             <form className="regform" onSubmit={onSubmitHandler}>
                 <h1 className="heading__reg">Registration Form</h1>
 
@@ -92,7 +94,7 @@ const Registration = (props) => {
                     />
                 </div>
 
-                <input className="Create" type="submit" value="Create Account" />
+                <input className="Create__button" type="submit" value="Create Account" />
                 <p className="note">* Indicates a require field</p>
             </form>
         </div>
