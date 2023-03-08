@@ -34,6 +34,7 @@ const Login = (props) => {
 
     return (
       <div>
+        <Link className="button__ToRegistration" to="/Registration">Register</Link>
         <form onSubmit={onSubmitLoginHandler} className="loginform">
                 
                 <div  className="email__container">
@@ -60,6 +61,7 @@ const Login = (props) => {
                     <input className="Create" type="submit" value="Submit" />
                 </div>
            </form>
+           <Link className="button__ToRegistration" to="/Registration">Register</Link>
       </div>
       );
 };
