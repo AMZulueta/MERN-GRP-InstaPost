@@ -34,7 +34,6 @@ const Login = (props) => {
 
     return (
       <div>
-        <Link className="button__ToRegistration" to="/Registration">Register</Link>
         <form onSubmit={onSubmitLoginHandler} className="loginform">
                 
                 <div>
