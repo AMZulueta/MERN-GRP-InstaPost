@@ -33,9 +33,9 @@ const Login = (props) => {
 };
 
     return (
-      <div>
-        <form onSubmit={onSubmitLoginHandler} className="loginform">
-                
+        <div>
+            <form onSubmit={onSubmitLoginHandler} className="loginform">
+                <h1>Login</h1>
                 <div>
                     <label>Email:*</label>
                     <input
@@ -59,9 +59,9 @@ const Login = (props) => {
                 <div>
                     <input className="Login__button" type="submit" value="Submit" />
                 </div>
-           </form>
-           <Link className="button__ToRegistration" to="/Registration">Register</Link>
-      </div>
-      );
+            </form>
+            <Link className="button__ToRegistration" to="/Registration">Register</Link>
+        </div>
+    );
 };
 export default Login;
