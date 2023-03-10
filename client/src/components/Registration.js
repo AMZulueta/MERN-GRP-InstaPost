@@ -37,12 +37,10 @@ const Registration = (props) => {
         });
     };
     
-  return (
-    <div>
+    return (
         <div className="reg__container">
-            <Link className="button__ToLogin" to="/">Login</Link>
             <form className="regform" onSubmit={onSubmitHandler}>
-                <h1 className="heading__reg">Registration Form</h1>
+                <h1 className="heading__reg">Registration</h1>
 
                 <div>
                     <label>First Name:*</label>
@@ -97,8 +95,8 @@ const Registration = (props) => {
                 <input className="Create__button" type="submit" value="Create Account" />
                 <p className="note">* Indicates a require field</p>
             </form>
+            <Link className="button__ToLogin" to="/">Login</Link>
         </div>
-      </div>
     );
 };
 
