@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
-import Login from './components/Login';
-import Registration from './components/Registration';
+import LoginReg from './components/LoginReg';
 import Profile from './components/ProfilePage';
 import FriendProfile from './components/FriendProfile';
 import EditProfile from './components/EditProfile';
@@ -12,8 +11,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-          <Route path="/" element={<Login/>} />
-          <Route path="/Registration" element={<Registration/>} />
+          <Route path="/" element={<LoginReg/>} />
           <Route path="/Profile" element={<Profile/>} />
           <Route path="/EditProfile" element={<EditProfile/>} />
           <Route path="/Profile/:id" element={<FriendProfile/>} />
