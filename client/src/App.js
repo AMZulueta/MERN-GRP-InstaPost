@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
-import Login from './component/Login';
-import Registration from './component/Registration';
-import Profile from './component/ProfilePage';
-import FriendProfile from './component/FriendProfile';
-import EditProfile from './component/EditProfile';
-import UserFeed from './component/UserFeed';
+import Login from './components/Login';
+import Registration from './components/Registration';
+import Profile from './components/ProfilePage';
+import FriendProfile from './components/FriendProfile';
+import EditProfile from './components/EditProfile';
+import UserFeed from './components/UserFeed';
 import './App.css';
 
 function App() {
