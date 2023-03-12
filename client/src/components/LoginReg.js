@@ -5,66 +5,57 @@ import "./LoginReg.css"
 
 const LoginReg = (props) => {
 
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmpw, setConfirmPw] = useState("");
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPw, setLoginPw] = useState("");
-    const navigate = useNavigate();
-    const [error, setError] = useState([]);
-    
-    const onSubmitHandler = (e) => {
-    e.preventDefault();
-
-    const newUser = {
-        fname,
-        lname,
-        email,
-        password,
-        confirmpw,
-    };
-
-    axios
-        .post(`http://localhost:8000/api/user`, newUser, {withCredentials: true,})
-        .then((res) => {
-            console.log(res);
-            console.log(res.data.newUser);
-
+    const navigate = useNavigate()
+    const [state, setState] = useState({
+        
+        registration: { 
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        },
+        login: {
+            email: '',
+            password: ''
+        }
     })
+    const [error, setError] = useState([]);
+
+    const { register, login } = state;
+
+    const handleRegInputs = (e) => {
+        setState({...state, register: {...state.register, [e.target.name]: e.target.value}})
+    }
+    
+    const handleRegistration = (e) => {
+        e.preventDefault();
+        props.setAuthorized("")
+        axios.post('http://localhost:8000/api/register', register, {withCredentials: true})
+        .then(res => console.log(res))
         .catch((err) => {
             console.log(err.response.data.errors);
-            
-        
-        });
-    };
-
-    const onSubmitLoginHandler = (e) => {
-    e.preventDefault();
-
-    const newUserLogin = {
-        loginEmail,
-        loginPw,
-    };
-
-    axios
-        .post(`http://localhost:8000/api/login`, newUserLogin, {
-            withCredentials: true,
+            setError(err.response.data.errors);
         })
-        .then((res) => {
-            console.log(res);
-            window.localStorage.setItem("appUserId", res.data._id);
-            window.localStorage.setItem("appUserName", res.data.fname);
-            console.log(res.data);
-            navigate("/UserFeed");
+    }
+
+    const handleLoginInputs = (e) => {
+        setState({...state, login: {...state.login, [e.target.name]: e.target.value}})
+    }
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:8000/api/login', login, {withCredentials: true})
+        .then((response)=> {
+            console.log(response)
+            navigate("/userfeed")
         })
         .catch((err) => {
-            console.log(err);
-        });
+            console.log(err.response.data.errors);
+            setError(err.response.data.errors);
+        })
 
-    
-};
+    }
 
     const handleSignUpClick = () => {
         const container = document.getElementById("container");
@@ -82,60 +73,53 @@ return (
     <div className="body">
         <div className="container" id="container">
             <div className="form__container sign_up_container">
-                <form className="reg__form" onSubmit={onSubmitHandler}>
+                <form className="reg__form" onSubmit={handleRegistration}>
                     <h1 className="heading__reg">Registration Form</h1>
                     <input
-                        onChange={(e) => setFname(e.target.value)}
+                        onChange={handleRegInputs}
                         type="text"
-                        value={fname}
-                        name="fname"
+                        name="firstName"
                         placeholder="First Name"
                     />
                     <input
-                        onChange={(e) => setLname(e.target.value)}
+                        onChange={handleRegInputs}
                         type="text"
-                        value={lname}
-                        name="lname"
+                        name="lastName"
                         placeholder="Last Name"
                     />
                     <input
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleRegInputs}
                         type="text"
-                        value={email}
                         name="email"
                         placeholder="Email"
                     />
                     <input
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={handleRegInputs}
                         type="password"
-                        value={password}
                         name="password"
                         placeholder="Password"
                     />
                     <input
-                        onChange={(e) => setConfirmPw(e.target.value)}
+                        onChange={handleRegInputs}
                         type="password"
-                        value={confirmpw}
-                        name="cpassword"
+                        name="confirmPassword"
                         placeholder="Confirm Password"
                     />
                     <button >Create Account</button>
                 </form>
             </div>
             <div className="form__container sign_in_container">
-                <form onSubmit={onSubmitLoginHandler} className="login__form">
+                <form onSubmit={handleLogin} className="login__form">
                     <h1 className="heading__Login">Login</h1>
                         <input
-                        onChange={(e) => setLoginEmail(e.target.value)}
+                        onChange={handleLoginInputs}
                         type="text"
-                        value={loginEmail}
                         name="email"
                         placeholder="Email"
                         />
                         <input
-                        onChange={(e) => setLoginPw(e.target.value)}
+                        onChange={handleLoginInputs}
                         type="password"
-                        value={loginPw}
                         name="password"
                         placeholder="Password"
                     />
