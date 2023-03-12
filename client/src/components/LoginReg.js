@@ -4,6 +4,7 @@ import { useNavigate} from "react-router-dom";
 import "./LoginReg.css"
 
 const LoginReg = (props) => {
+
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
@@ -13,18 +14,6 @@ const LoginReg = (props) => {
     const [loginPw, setLoginPw] = useState("");
     const navigate = useNavigate();
     const [error, setError] = useState([]);
-
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const container = document.getElementById('container');
-
-    signUpButton.addEventListener(
-        "click", () => container.classList.add("right-panel-active")
-    );
-
-    signInButton.addEventListener(
-        "click", () => container.classList.remove("right-panel-active")
-    );
     
     const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -73,7 +62,21 @@ const LoginReg = (props) => {
         .catch((err) => {
             console.log(err);
         });
+
+    
 };
+
+    const handleSignUpClick = () => {
+        const container = document.getElementById("container");
+        container.classList.add("right-panel-active");
+    };
+
+    const handleSignInClick = () => {
+        const container = document.getElementById("container");
+        container.classList.remove("right-panel-active");
+    };
+    
+    
 
 return (
     <div className="body">
@@ -139,17 +142,17 @@ return (
                         <button>Login</button>
                 </form>
             </div>
-            <div className="overlay__container">
+            <div className="overlay-container">
                 <div className="overlay">
                     <div className="overlay-panel overlay-left">
                         <h1>Insta<span>Post</span></h1>
                         <p>Remember your wonderful core memories</p>
-                        <button className="ghost" id="signIn">Login</button>
+                        <button id="signIn" className="ghost"  onClick={handleSignInClick}>Login</button>
                     </div>
                     <div className="overlay-panel overlay-right">
                         <h1>Insta<span>Post</span></h1>
                         <p>Remember your wonderful core memories</p>
-                        <button className="ghost" id="signUp" >Create Account</button>
+                        <button  id="signUp" className="ghost" onClick={handleSignUpClick}>Create Account</button>
                     </div>
                 </div>
             </div>
