@@ -60,6 +60,7 @@ return (
                 <p>{about}</p>
             </div>
             <div className="subcontainer__2">
+                <form className="reg__form" onSubmit={onSubmitHandler2}>
                 <div className="edit__fname">
                     <input
                         placeholder="First Name"
@@ -100,6 +101,8 @@ return (
                         value={avatar}
                         onChange={(e) => setAvatar(e.target.value)} />
                 </div>
+                <button >Update</button>
+                </form>
             </div>
         </div>
     </>
