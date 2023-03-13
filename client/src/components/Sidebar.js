@@ -8,32 +8,34 @@ const Sidebar = () => {
     return (
         <Box flex={1} p={2} sx={{ display: { xs: 'none', sm: 'block'} }}
         >
-            <List>
-                <ListItem disablePadding>
-                    <ListItemButton component='a' href='home'>
-                    <ListItemIcon>
-                        <Home />
-                    </ListItemIcon>
-                    <ListItemText primary="Homepage" />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton component='a' href="friends">
-                    <ListItemIcon>
-                        <PersonIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Friends" />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton component='a' href="profile">
-                    <ListItemIcon>
-                        <AccountCircleIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Profile" />
-                    </ListItemButton>
-                </ListItem>
-            </List>
+            <Box position='fixed'>
+                <List>
+                    <ListItem disablePadding>
+                        <ListItemButton component='a' href='home'>
+                        <ListItemIcon>
+                            <Home />
+                        </ListItemIcon>
+                        <ListItemText primary="Homepage" />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton component='a' href="friends">
+                        <ListItemIcon>
+                            <PersonIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Friends" />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton component='a' href="profile">
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Profile" />
+                        </ListItemButton>
+                    </ListItem>
+                </List>
+            </Box>    
         </Box>
     );
 };
