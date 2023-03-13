@@ -17,7 +17,7 @@
 .subcontainer__2 input {
     background-color: #dedede;
     border: none;
-    padding: 12px 15px;
+    padding: 9px 15px;
     margin: 0 0 0 0;
     border-radius: 5px;
     width: 90%;
@@ -33,6 +33,10 @@ textarea{
     width: 90%;
 }
 
+.edit__container button{
+    margin-left: 28%;
+    margin-bottom: 25px;
+}
 @media screen and (max-width: 850px) {
     .edit__container {
         background-color: #fff;
@@ -50,7 +54,7 @@ textarea{
     .subcontainer__2 input {
         background-color: #dedede;
         border: none;
-        padding: 12px 15px;
+        padding: 9px 15px;
         margin: 0 0 0 0;
         border-radius: 5px;
         width: 90%;
@@ -59,6 +63,8 @@ textarea{
         align-items: center;
         justify-content: center;
         }
+    .edit__container button {
+        margin-left: 28%;
+        margin-bottom: 25px;
+        }
 }
-
-
