@@ -1,44 +1,159 @@
 import React from "react";
-import { Box, Card, CardHeader } from "@mui/material";
+import { Box, Card, CardHeader, Avatar, CardMedia, CardActions, Checkbox, IconButton, CardContent, Typography } from "@mui/material";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ShareIcon from '@mui/icons-material/Share';
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import Favorite from "@mui/icons-material/Favorite";
 
 const Feed = () => {
     return (
-        <Box flex={4} p={2}>Feed</Box>
-        <Card>
-            <CardHeader
-                avatar={
-                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                    R
-                </Avatar>
-                }
-                action={
-                <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                </IconButton>
-                }
-                title="Shrimp and Chorizo Paella"// insert post description
-                subheader="September 14, 2016" //insert created at
-            />
-            <CardMedia
-                component="img"
-                height="20%"
-                image={} // insert obj/image usestate from user
-                alt="Paella dish"
-            />
-        <CardContent>
-            <Typography variant="body2" color="text.secondary">
-                //insert object from post description
-            </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-                    //add like JS upon clicking icon
-                <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{color: 'red'}} />} />
-            </IconButton>
-            <IconButton aria-label="share">
-                <ShareIcon />
-            </IconButton>
-        </Card>
+        <Box flex={4} p={2}>
+            <Card sx={{margin: 5}}>
+                <CardHeader
+                    avatar={
+                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+                        A
+                    </Avatar>
+                    }
+                    action={
+                    <IconButton aria-label="settings">
+                        <MoreVertIcon />
+                    </IconButton>
+                    }
+                    title="Shrimp and Chorizo Paella"
+                    subheader="September 14, 2016" 
+                />
+                <CardMedia
+                    component="img"
+                    height="20%"
+                    image=""
+                    alt="Paella dish"
+                />
+            <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                    {/* //insert object from post description */}
+                </Typography>
+            </CardContent>
+                <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                            {/* //add like JS upon clicking icon */}
+                        <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{color: 'red'}} />} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <ShareIcon />
+                    </IconButton>
+                </CardActions>
+            </Card>
+            <Card sx={{margin: 5}}>
+                <CardHeader
+                    avatar={
+                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+                        A
+                    </Avatar>
+                    }
+                    action={
+                    <IconButton aria-label="settings">
+                        <MoreVertIcon />
+                    </IconButton>
+                    }
+                    title="Shrimp and Chorizo Paella"
+                    subheader="September 14, 2016" 
+                />
+                <CardMedia
+                    component="img"
+                    height="20%"
+                    image=""
+                    alt="Paella dish"
+                />
+                <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                        {/* //insert object from post description */}
+                    </Typography>
+                </CardContent>
+                    <CardActions disableSpacing>
+                        <IconButton aria-label="add to favorites">
+                                {/* //add like JS upon clicking icon */}
+                            <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{color: 'red'}} />} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <ShareIcon />
+                    </IconButton>
+                </CardActions>
+            </Card>
+            <Card sx={{margin: 5}}>
+                <CardHeader
+                    avatar={
+                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+                        A
+                    </Avatar>
+                    }
+                    action={
+                    <IconButton aria-label="settings">
+                        <MoreVertIcon />
+                    </IconButton>
+                    }
+                    title="Shrimp and Chorizo Paella"
+                    subheader="September 14, 2016" 
+                />
+                <CardMedia
+                    component="img"
+                    height="20%"
+                    image=""
+                    alt="Paella dish"
+                />
+                <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                        {/* //insert object from post description */}
+                    </Typography>
+                </CardContent>
+                    <CardActions disableSpacing>
+                        <IconButton aria-label="add to favorites">
+                            {/* //add like JS upon clicking icon */}
+                        <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{color: 'red'}} />} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <ShareIcon />
+                    </IconButton>
+                </CardActions>
+            </Card>
+            <Card sx={{margin: 5}}>
+                <CardHeader
+                    avatar={
+                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+                        A
+                    </Avatar>
+                    }
+                    action={
+                    <IconButton aria-label="settings">
+                        <MoreVertIcon />
+                    </IconButton>
+                    }
+                    title="Shrimp and Chorizo Paella"
+                    subheader="September 14, 2016" 
+                />
+                <CardMedia
+                    component="img"
+                    height="20%"
+                    image=""
+                    alt="Paella dish"
+                />
+            <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                    {/* //insert object from post description */}
+                </Typography>
+            </CardContent>
+                <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                            {/* //add like JS upon clicking icon */}
+                        <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{color: 'red'}} />} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <ShareIcon />
+                    </IconButton>
+                </CardActions>
+            </Card>
+        
+        </Box>
     );
 };
 
