@@ -16,7 +16,7 @@ const EditProfile = (props) => {
 
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/primejob/" + id, { withCredentials: true })
+        axios.get("http://localhost:8000/api/???????/" + id, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setFname(res.data.fname);
