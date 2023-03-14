@@ -12,7 +12,7 @@ class Navbar extends Component{
 
     render() {
         return (
-            <div>
+            <div className="navbar">
                 <nav className="navbaritems">
                     <h1 className="nav__logo"><span className="instalogo">InstaPost</span> </h1>
                     <input className="nav__sort" placeholder="Search"/>
