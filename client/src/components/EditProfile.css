@@ -1,10 +1,9 @@
 .edit__container{
     background-color:#fff;
     width: 50%;
-    height: 530px;
+    height: 590px;
     display: flex;
     flex-direction: column;
-
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     align-items: center;
     margin-left: 25%;
@@ -43,7 +42,7 @@ textarea{
         background-color: #fff;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         width: 90%;
-        height: 525px;
+        height: 580px;
         display: flex;
         flex-direction: column;
         align-items: center;
