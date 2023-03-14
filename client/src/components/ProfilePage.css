@@ -1,15 +1,14 @@
 .profilepage__container {
     background-color: #fff;
     width:70%;
-    height: auto;
+    height: 100%;
     display: flex;
     flex-direction: column;
-
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     align-items: center;
     margin-left: 15%;
     margin-right: 25%;
-    padding-bottom: 150px;
+    padding-bottom: 160px;
 }
 
 .top_button {
@@ -31,7 +30,7 @@
 }
 
 .description__post{
-    margin-top: 70px;
+    margin-top:90px;
     display: flex;
     flex-direction: column;
 }
@@ -77,6 +76,18 @@
 }
 
 @media screen and (max-width: 850px) {
+    .profilepage__container {
+        background-color: #fff;
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        align-items: center;
+        margin-left: 15%;
+        margin-right: 25%;
+        padding-bottom: 165px;
+    }
     .top_button {
         border-radius: 20px;
         border: 1px solid;
@@ -90,7 +101,7 @@
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: transform 80ms ease-in;
-        margin-left: 15%;
+        margin-left: 18%;
         margin-top: 30%;
         }
     .description__text {
@@ -100,11 +111,12 @@
         outline: none;
     }
     .description__post {
-        margin-top: 20px;
+        margin-top: 60px;
         display: flex;
         flex-direction: column;
     }
 }
+
 
 
 
