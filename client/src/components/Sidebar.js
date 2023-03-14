@@ -6,12 +6,12 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Sidebar = () => {
     return (
-        <Box flex={1} p={2} sx={{ display: { xs: 'none', sm: 'block'} }}
+        <Box flex={1} p={2} mt={5} sx={{ display: { xs: 'none', sm: 'block'} }}
         >
             <Box position='fixed'>
                 <List>
                     <ListItem disablePadding>
-                        <ListItemButton component='a' href='home'>
+                        <ListItemButton component='a' href='/userfeed'>
                         <ListItemIcon>
                             <Home />
                         </ListItemIcon>
@@ -27,7 +27,7 @@ const Sidebar = () => {
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton component='a' href="profile">
+                        <ListItemButton component='a' href="/profile">
                         <ListItemIcon>
                             <AccountCircleIcon />
                         </ListItemIcon>

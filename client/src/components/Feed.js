@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Card, CardHeader, Avatar, CardMedia, CardActions, Checkbox, IconButton, CardContent, Typography } from "@mui/material";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
+import { useParams } from "react-router-dom";
 
 const Feed = () => {
+
+    const { id } = useParams();
+
     return (
         <Box flex={4} p={2}>
-            <Card sx={{margin: 5}}>
+            <Card sx={{margin: 5, mt: 8}}>
                 <CardHeader
                     avatar={
                     <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">

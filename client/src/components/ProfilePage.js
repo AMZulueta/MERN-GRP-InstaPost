@@ -5,6 +5,7 @@ import Navbar2 from "./Navbar2";
 import "./ProfilePage.css"
 import photocamera from '../assets/photocamera.png';
 
+
 const ProfilePage = (props) => {
     const { id } = useParams();
     const [fname, setFname] = useState("");
@@ -18,7 +19,7 @@ const ProfilePage = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/??????/" + id, { withCredentials: true })
+        axios.get("http://localhost:8000/api/post/" + id, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setFname(res.data.fname);
@@ -41,7 +42,7 @@ const ProfilePage = (props) => {
         }
 
         axios
-            .post("http://localhost:8000/api/?????",newPost, { withCredentials: true })
+            .post("http://localhost:8000/api/post",newPost, { withCredentials: true })
             .then((res) => {
                 console.log("Creation successful on backend")
                 console.log(res)
