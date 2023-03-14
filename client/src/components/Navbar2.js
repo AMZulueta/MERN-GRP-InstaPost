@@ -12,7 +12,7 @@ class Navbar2 extends Component{
 
     render() {
         return (
-            <div>
+            <div className="navbar">
                 <nav className="navbaritems">
                     <h1 className="nav__logo"><span className="instalogo">InstaPost</span> </h1>
                     
@@ -31,3 +31,4 @@ class Navbar2 extends Component{
     }
 }
 export default Navbar2;
+
