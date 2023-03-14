@@ -4,7 +4,7 @@
     height: 530px;
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
+
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     align-items: center;
     margin-left: 25%;
@@ -14,6 +14,7 @@
     width: 80%;
     height: 200px;
 }
+
 .subcontainer__2 input {
     background-color: #dedede;
     border: none;
@@ -45,7 +46,6 @@ textarea{
         height: 525px;
         display: flex;
         flex-direction: column;
-        margin-top: 60px;
         align-items: center;
         margin-left: 5%;
         margin-right: 0%;
