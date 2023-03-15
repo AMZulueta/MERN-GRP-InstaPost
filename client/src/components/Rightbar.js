@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, IconButton, TextField } from "@mui/material";
+import { Box, Button, IconButton, Input, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
@@ -43,21 +43,30 @@ const Rightbar = (props) => {
                     onChange={(e) => setDescription(e.target.value)}
                     />
                     <Stack direction='row' gap={1} marginTop={1}>
-                        <IconButton color="primary"
-                                type='file'
-                                value={image}
-                                onChange={(e) => setImage(e.target.value)}
-                                aria-label="add"
-                            >
-                            <AddPhotoAlternateIcon />
-                        </IconButton>
-                        <IconButton color="primary"
-                                type='file'
-                                value={image}
-                                onChange={(e) => setImage(e.target.value)}
-                                aria-label="add">
-                            <VideoCameraBackIcon />
-                        </IconButton>
+                        <label htmlFor="icon-button-file">
+                            <Input accept="image/*" id="icon-button-file" type="file" sx={{display: 'none'}} />
+                                <IconButton color="primary"
+                                        aria-label="upload picture"
+                                        component="span"
+                                        value={image}
+                                        onChange={(e) => setImage(e.target.value)}
+                                        
+                                    >
+                                    <AddPhotoAlternateIcon />
+                                </IconButton>
+                        </label>
+                        <label htmlFor="icon-button-file">
+                            <Input accept="image/*" id="icon-button-file" type="file" sx={{display: 'none'}} />
+                                <IconButton color="primary"
+                                        aria-label="upload picture"
+                                        component="span"
+                                        value={image}
+                                        onChange={(e) => setImage(e.target.value)}
+                                        
+                                    >
+                                    <VideoCameraBackIcon />
+                                </IconButton>
+                        </label>
                     </Stack>
                         <Button variant="contained" type="submit">Post</Button>
                 </form>
