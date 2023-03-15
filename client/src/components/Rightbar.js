@@ -44,26 +44,22 @@ const Rightbar = (props) => {
                     />
                     <Stack direction='row' gap={1} marginTop={1}>
                         <label htmlFor="icon-button-file">
-                            <Input accept="image/*" id="icon-button-file" type="file" sx={{display: 'none'}} />
+                            <Input accept="image/*" id="icon-button-file" type="file" onChange={(e) => setImage(e.target.value)} sx={{display: 'none'}} />
                                 <IconButton color="primary"
                                         aria-label="upload picture"
                                         component="span"
                                         value={image}
-                                        onChange={(e) => setImage(e.target.value)}
-                                        
-                                    >
+                                >
                                     <AddPhotoAlternateIcon />
                                 </IconButton>
                         </label>
                         <label htmlFor="icon-button-file">
-                            <Input accept="image/*" id="icon-button-file" type="file" sx={{display: 'none'}} />
+                            <Input accept="image/*" id="icon-button-file" type="file" onChange={(e) => setImage(e.target.value)} sx={{display: 'none'}} />
                                 <IconButton color="primary"
                                         aria-label="upload picture"
                                         component="span"
                                         value={image}
-                                        onChange={(e) => setImage(e.target.value)}
-                                        
-                                    >
+                                >
                                     <VideoCameraBackIcon />
                                 </IconButton>
                         </label>
