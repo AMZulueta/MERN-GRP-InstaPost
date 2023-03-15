@@ -85,7 +85,7 @@ const ProfilePage = (props) => {
                     <p>{avatar}</p>
                     <h1 className="profilepage__user">{fname} {lname}</h1>
                     <p>{about}</p>
-                    <p><Link to={'/EditProfile'} className="top_button">Edit Profile</Link></p>
+                    <p><Link to={'/edit'} className="top_button">Edit Profile</Link></p>
                 </div>
                 <form className="description__post"onSubmit={onSubmitHandler}>
                     <textarea
@@ -107,11 +107,12 @@ const ProfilePage = (props) => {
                 <div className="display_image">
                     {   
                         allPost.length > 0 && 
-                        allPost.map((post, index) => (
+                        allPost.map((Post, index) => (
                         <div key={index}>
                             <div>
                                 <img src={image}/>
-                                <button onClick={() => deletePost(post._id)}>Delete</button>
+                                    <button onClick={() => deletePost(Post._id)}>Delete</button>
+                                    <Link className="Edit__button"to={`/post/edit/${Post._id}` }>Edit</Link>
                             </div>
                         </div>
                         ))
