@@ -17,6 +17,8 @@ const ProfilePage = (props) => {
     const [image, setImage] = useState("");
     const [error, setError] = useState([]);
     const navigate = useNavigate();
+    const [name, setName] = useState(window.localStorage.getItem("appUserName") || "");
+    const [userId, setUserId] = useState(window.localStorage.getItem("appUserId") || "");
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/post/" + id, { withCredentials: true })
@@ -30,15 +32,28 @@ const ProfilePage = (props) => {
             .catch((err) => console.log(err))
     }, [id]);
 
+    const handleImg = (e) => {
+        const file = e.target.files[0];
+        setFileToBase(file);
+        console.log(file)
+    }
+
+    const setFileToBase = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file); 
+        reader.onloadend = () =>{
+        setImage(reader.result);
+        }
+    }
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
         
-        const newPost = {
-            fname,
-            lname,
-            avatar,
+        const newPost =  {
             description,
             image,
+            name,
+            userId,
         }
 
         axios
@@ -46,7 +61,6 @@ const ProfilePage = (props) => {
             .then((res) => {
                 console.log("Creation successful on backend")
                 console.log(res)
-                window.location.reload();
                 
             })
             .catch((err) => {
@@ -83,9 +97,9 @@ const ProfilePage = (props) => {
             <div className="profilepage__container">
                 <div className="profile__container">
                     <p>{avatar}</p>
-                    <h1 className="profilepage__user">{fname} {lname}</h1>
+                    <h1 className="profilepage__user">{name}</h1>
                     <p>{about}</p>
-                    <p><Link to={'/edit'} className="top_button">Edit Profile</Link></p>
+                    <p><Link to={'/EditProfile'} className="top_button">Edit Profile</Link></p>
                 </div>
                 <form className="description__post"onSubmit={onSubmitHandler}>
                     <textarea
@@ -99,20 +113,22 @@ const ProfilePage = (props) => {
                         <input
                         className="camera_input"
                         type="file"
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)} />
+                        onChange={handleImg}
+                        name="image"
+                        accept='.jpeg, .png, .jpg'
+                        />
                         <button className="submit">Submit</button>
                     </div>
                 </form>
                 <div className="display_image">
                     {   
                         allPost.length > 0 && 
-                        allPost.map((Post, index) => (
+                        allPost.map((post, index) => (
                         <div key={index}>
                             <div>
                                 <img src={image}/>
-                                    <button onClick={() => deletePost(Post._id)}>Delete</button>
-                                    <Link className="Edit__button"to={`/post/edit/${Post._id}` }>Edit</Link>
+                                <button onClick={() => deletePost(post._id)}>Delete</button>
+                                <Link className="Edit__button"to={`/post/edit/${post._id}` }>Edit</Link>
                             </div>
                         </div>
                         ))
