@@ -1,4 +1,4 @@
-const User = require('../models/users.model');
+const User = require('../models/user.models');
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
@@ -54,5 +54,10 @@ module.exports = {
             sameSite: 'none'
         });
         res.sendStatus(200);
-    }
+    },
+    findAll: (req, res) => {
+        User.find()
+            .then(allUsers => res.json(allUsers))
+            .catch(err => res.status(400).json(err))
+    },
 }
