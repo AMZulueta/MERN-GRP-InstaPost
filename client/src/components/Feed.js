@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Card, CardHeader, Avatar, CardMedia, CardActions, Checkbox, IconButton, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardHeader, Avatar, CardMedia, CardActions, Checkbox, IconButton, CardContent, Typography, Tooltip } from "@mui/material";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import { useParams } from "react-router-dom";
 import axios from 'axios'
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const Feed = () => {
 
@@ -27,17 +28,17 @@ const Feed = () => {
             })
     }, [])
 
-    useEffect(()=>{
-        axios.get('http://localhost:8000/api/user' + id, {withCredentials: true})
-            .then((res)=>{
-            console.log(res);
-            console.log(res.data);
-            setUserData(res.data);
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-    }, [])
+    // useEffect(()=>{
+    //     axios.get('http://localhost:8000/api/user' + id, {withCredentials: true})
+    //         .then((res)=>{
+    //         console.log(res);
+    //         console.log(res.data);
+    //         setUserData(res.data);
+    //         })
+    //         .catch((err)=>{
+    //             console.log(err)
+    //         })
+    // }, [])
 
     return (
         <Box flex={4} p={2}>
@@ -61,7 +62,7 @@ const Feed = () => {
                     component="img"
                     height="20%"
                     image={post.image}
-                    alt="Paella dish"
+                    alt="post image"
                 />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
@@ -79,6 +80,11 @@ const Feed = () => {
                 </CardActions>
             </Card>
             })}
+            <Tooltip title="add" sx={{ color: 'blue', position: "fixed", marginTop: '1000px', left: { xs: "calc(50% - 25px)", md: 30}}}>
+                    <IconButton aria-label="add" color="secondary.dark" href='/profile'>
+                        <AddCircleIcon sx={{ fontSize:40 }}/>
+                    </IconButton>
+            </Tooltip> 
         </Box>
     );
 };
