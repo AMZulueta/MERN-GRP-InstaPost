@@ -9,15 +9,15 @@ const LoginReg = (props) => {
     const [state, setState] = useState({
         
         registration: { 
-            firstName: '',
-            lastName: '',
+            fname: '',
+            lname: '',
             email: '',
             password: '',
             confirmPassword: ''
         },
         login: {
-            email: '',
-            password: ''
+            loginEmail: '',
+            loginPw: ''
         }
     })
     const [error, setError] = useState([]);
@@ -48,7 +48,9 @@ const LoginReg = (props) => {
         axios.post('http://localhost:8000/api/login', login, {withCredentials: true})
         .then((response)=> {
             console.log(response)
-            navigate("/userfeed")
+            window.localStorage.setItem("appUserId", response.data._id);
+            window.localStorage.setItem("appUserName", response.data.fname);
+            navigate(`/userfeed`)
         })
         .catch((err) => {
             console.log(err.response.data.errors);
@@ -78,13 +80,13 @@ return (
                     <input
                         onChange={handleRegInputs}
                         type="text"
-                        name="firstName"
+                        name="fname"
                         placeholder="First Name"
                     />
                     <input
                         onChange={handleRegInputs}
                         type="text"
-                        name="lastName"
+                        name="lname"
                         placeholder="Last Name"
                     />
                     <input
@@ -114,13 +116,13 @@ return (
                         <input
                         onChange={handleLoginInputs}
                         type="text"
-                        name="email"
+                        name="loginEmail"
                         placeholder="Email"
                         />
                         <input
                         onChange={handleLoginInputs}
                         type="password"
-                        name="password"
+                        name="loginPw"
                         placeholder="Password"
                     />
                         <button>Login</button>

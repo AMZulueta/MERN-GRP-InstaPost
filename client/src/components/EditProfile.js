@@ -13,10 +13,10 @@ const EditProfile = (props) => {
     const [avatar, setAvatar] = useState("");
     const [error, setError] = useState([]);
     const navigate = useNavigate();
-
+    const [userId, setUserId] = useState(window.localStorage.getItem("appUserId") || "");
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/???????/" + id, { withCredentials: true })
+        axios.get("http://localhost:8000/api/user/" + userId, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setFname(res.data.fname);
@@ -27,6 +27,20 @@ const EditProfile = (props) => {
             })
             .catch((err) => console.log(err))
     }, [id]);
+
+    const handleImg = (e) => {
+        const file = e.target.files[0];
+        setFileToBase(file);
+        console.log(file)
+    }
+
+    const setFileToBase = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file); 
+        reader.onloadend = () =>{
+        setAvatar(reader.result);
+        }
+    }
 
     const onSubmitHandler2 = (e) => {
         e.preventDefault();
@@ -39,10 +53,10 @@ const EditProfile = (props) => {
         }
 
         axios
-            .put("http://localhost:8000/api/???????/" + id,updatedProfile, { withCredentials: true })
+            .put("http://localhost:8000/api/user/update/" + userId, updatedProfile, { withCredentials: true })
             .then((res) => {
                 console.log("Update profile successful", res);
-                navigate('/User', { replace: true });
+                navigate(`/profile/${userId}`, { replace: true });
             })
             .catch((err) => {
                 console.log(err.response.data.errors);
@@ -56,7 +70,7 @@ return (
         <div className="edit__container">
             <div className="user">
                 <img src={avatar} />
-                <h1>{fname}{lname}</h1>
+                <h1>{fname} {lname}</h1>
                 <p>{about}</p>
             </div>
             <div className="subcontainer__2">
@@ -90,7 +104,7 @@ return (
                         value={about}
                         onChange={(e) => setAbout(e.target.value)} />
                     <div className="error__box">
-                        {(about.length > 0 && about.length >= 40) ? < i > Must not excide to 40 characters.</i> : ""}
+                        {/* {(about.length > 0 && about.length >= 40) ? < i > Must not excide to 40 characters.</i> : ""} */}
                         <br />{error.about ? <i className="err-msg">{error.about.message}</i> : null}
                     </div>
                 </div>
@@ -98,8 +112,7 @@ return (
                     <label>Profile Picture</label>
                     <input
                         type="file"
-                        value={avatar}
-                        onChange={(e) => setAvatar(e.target.value)} />
+                        onChange={handleImg} />
                 </div>
                 <button >Update</button>
                 </form>

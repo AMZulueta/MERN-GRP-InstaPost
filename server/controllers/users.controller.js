@@ -1,58 +1,81 @@
-const User = require('../models/users.model');
+const User = require('../models/user.models');
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
+const env = require('dotenv').config();
 
-module.exports = {
+const secret = "I can't believe this key is so secret!";
+
+module.exports = ({
+    create: (req, res) => {
+        bcrypt.hash(req.body.password, 10)
+            .then(hash => {
+
+                req.body.password = hash;
+
+                User.create(req.body)
+                    .then(newUser => {
+                        // if we made it this far, the password was correct
+                        const userToken = jwt.sign({
+                            id: newUser._id
+                        }, process.env.SECRET_KEY);
+
+                        res.cookie("userToken", userToken, {
+                            httpOnly: true
+                        }).json(newUser)
+                    })
+                    .catch(err =>  res.status(400).json(err))
+            });
+    },
+    findOne: (req, res) => {
+        console.log(req.body.loginEmail);
+
+        if(!req.body.loginEmail) {
+            return res.status(400).json({ message: "Invalid login" });
+        }
+        
+        User.findOne({ email:req.body.loginEmail })
+            .then(async oneUser => {
+
+                if (!oneUser) {
+                    return res.status(400).json({ message: "Email not found!" });
+                }
+                const correctPassword = await bcrypt.compare(req.body.loginPw, oneUser.password)
+            
+                if (!correctPassword) {
+                    return res.status(400).json({ message: "Invalid login" });
+                }
+            
+                const userToken = jwt.sign({
+                    id: oneUser._id
+                }, process.env.SECRET_KEY);
+                
+                let user = {};
+                user._id = oneUser._id;
+                user.fname = oneUser.fname;
+                user.lname = oneUser.lname;
+                user.email = oneUser.email;
+            
+                res.cookie("userToken", userToken, {httpOnly: true}).json(user);
+            })
+            .catch((err) => res.status(400).json({message: "Something went wrong during find", error: err}))
+    }, 
+    logout: (req, res)  => {
+        res.clearCookie('userToken');
+        res.sendStatus(200)
+    },
     findAll: (req, res) => {
         User.find()
             .then(allUsers => res.json(allUsers))
             .catch(err => res.status(400).json(err))
     },
-    register: (req, res) => {
-        User.create(req.body)
-        .then(newUser => {
-            const userToken = jwt.sign({
-                id: newUser._id
-            }, process.env.SECRET_KEY);
-            res
-                .cookie("usertoken", userToken, {
-                    // secure: true,
-                    // sameSite: 'none',
-                    httpOnly: true
-                })
-                .json({ message: "Successfully Registered!", user: newUser });
-        })
-        .catch(err => res.status(400).json({message: "Problem with registration", error: err}));
+    findOneId: (req, res) => {
+        User.findById(req.params.id)
+            .then((user) => res.json(user))
+            .catch(err => res.status(400).json({message: 'Something went wrong', error: err}));
     },
-    login: async (req, res)=> {
-        const user = await User.findOne({ email: req.body.email })
-        if (!user) {
-            return res.status(400).json({message: "Invalid Log In"})
-        }
-
-        const correctPassword = await bcrypt.compare(req.body.password, user.password);
-
-        if(!correctPassword) {
-            return res.status(400).json({message: "Incorrect Password"})
-        }
-
-        const userToken = jwt.sign({
-            id: user._id
-        }, process.env.SECRET_KEY);
-        res
-            .cookie("usertoken", userToken, {
-                // secure: true,
-                // sameSite: 'none',
-                httpOnly: true
-            })
-            .json({ msg: "Successfully Logged In!" });
-    },  
-
-    logout: (req, res) => {
-        res.clearCookie('usertoken', {
-            secure: true,
-            sameSite: 'none'
-        });
-        res.sendStatus(200);
-    }
-}
+    update: (req, res) => {
+        User.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
+        .then(updatedUser => res.json(updatedUser))
+        .catch(err => res.status(400).json({message: 'Something went wrong with updated product', error: err}));
+    },
+});

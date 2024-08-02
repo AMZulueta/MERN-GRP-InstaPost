@@ -1,7 +1,6 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import { Link } from 'react-router-dom';
 import "./Navbar.css"
-
 
 class Navbar2 extends Component{
 
@@ -12,7 +11,7 @@ class Navbar2 extends Component{
 
     render() {
         return (
-            <div>
+            <div className="navbar">
                 <nav className="navbaritems">
                     <h1 className="nav__logo"><span className="instalogo">InstaPost</span> </h1>
                     
@@ -22,7 +21,7 @@ class Navbar2 extends Component{
                     
                     <ul className={this.state.clicked ? "nav__menu active" : "nav__menu"}>
                         <li><Link className="nav__links" to="/Userfeed">Home</Link></li>
-                        <li><Link className="nav__links" to="/Profile">MyProfile</Link></li>
+                        <li><Link className="nav__links" to="/myprofile">MyProfile</Link></li>
                         <li><Link className="nav__button" to="/Logout">Logout</Link></li>
                     </ul>
                 </nav>
