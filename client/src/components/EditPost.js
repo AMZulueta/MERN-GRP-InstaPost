@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate , useParams} from 'react-router-dom';
+import {  Link, useNavigate , useParams} from 'react-router-dom';
 import axios from "axios";
 import Navbar2 from "./Navbar2";
 import "./ProfilePage.css"
@@ -14,7 +15,6 @@ const EditPost = (props) => {
     const [image, setImage] = useState("");
     const [error, setError] = useState([]);
     const navigate = useNavigate();
-    
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/post/" + id, { withCredentials: true })
@@ -41,7 +41,7 @@ const EditPost = (props) => {
             image,
         }
 
-    axios
+        axios
             .put("http://localhost:8000/api/post/" + id,updatedPost, { withCredentials: true })
             .then((res) => {
                 console.log("Update successful on backend", res);

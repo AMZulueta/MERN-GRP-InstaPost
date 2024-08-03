@@ -29,4 +29,6 @@ class Navbar2 extends Component{
         )
     }
 }
+
 export default Navbar2;
+

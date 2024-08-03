@@ -1,6 +1,6 @@
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-import { Box, createTheme, Stack, ThemeProvider } from '@mui/material'
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { AppBar, Box, createTheme, Stack, ThemeProvider, Toolbar, Typography } from '@mui/material'
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import Feed from "./Feed";

@@ -8,6 +8,7 @@ const PostSchema = new Schema({
     image: {
         type: String
     },
+
     title: {
         type: String
     },

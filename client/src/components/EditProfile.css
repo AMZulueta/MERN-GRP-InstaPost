@@ -1,19 +1,19 @@
 .edit__container{
     background-color:#fff;
-    width: 50%;
-    height: 530px;
+    width: 70%;
+    height: 590px;
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     align-items: center;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 .user{
     width: 80%;
     height: 200px;
 }
+
 .subcontainer__2 input {
     background-color: #dedede;
     border: none;
@@ -42,10 +42,9 @@ textarea{
         background-color: #fff;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         width: 90%;
-        height: 525px;
+        height: 580px;
         display: flex;
         flex-direction: column;
-        margin-top: 60px;
         align-items: center;
         margin-left: 5%;
         margin-right: 0%;
@@ -68,3 +67,4 @@ textarea{
         margin-bottom: 25px;
         }
 }
+

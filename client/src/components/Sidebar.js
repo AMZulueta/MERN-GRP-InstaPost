@@ -5,7 +5,6 @@ import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
 
-
 const Sidebar = ({mode,setMode}) => {
     return (
         <Box flex={1} p={2} mt={5} sx={{ display: { xs: 'none', sm: 'block'} }}

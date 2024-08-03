@@ -6,6 +6,7 @@ import "./ProfilePage.css"
 import photocamera from '../assets/photocamera.png';
 
 
+
 const ProfilePage = (props) => {
     const { id } = useParams();
     const [getUSer, setGetUser] = useState([]);
@@ -21,23 +22,14 @@ const ProfilePage = (props) => {
     const [name, setName] = useState(window.localStorage.getItem("appUserName") || "");
     const [userId, setUserId] = useState(window.localStorage.getItem("appUserId") || "");
 
-
     useEffect(() => {
-        axios.get("http://localhost:8000/api/user/" + userId, { withCredentials: true })
-            .then((res) => {     
-            // console.log(res.data)
-            setGetUser(res.data)
-
-            })
-            .catch((err) => console.log(err))
-    }, [id]);
-
-    useEffect(() => {
-        axios.get("http://localhost:8000/api/userpost/" + userId, { withCredentials: true })
-            .then((res) => {     
-            console.log(res.data)
-            setAllPost(res.data)
-
+        axios.get("http://localhost:8000/api/post/" + id, { withCredentials: true })
+            .then((res) => {
+                console.log(res.data);
+                setFname(res.data.fname);
+                setLname(res.data.lname);
+                setAvatar(res.data.avatar);
+                
             })
             .catch((err) => console.log(err))
     }, [id]);
@@ -45,7 +37,8 @@ const ProfilePage = (props) => {
     const handleImg = (e) => {
         const file = e.target.files[0];
         setFileToBase(file);
-        // console.log(file)
+        console.log(file)
+
     }
 
     const setFileToBase = (file) => {
@@ -70,7 +63,6 @@ const ProfilePage = (props) => {
             .then((res) => {
                 console.log("Creation successful on backend")
                 console.log(res)
-                
             })
             .catch((err) => {
                     console.log(err);
@@ -94,14 +86,14 @@ const ProfilePage = (props) => {
     }
 
 
-    // useEffect(() => {
-    //     axios.get("http://localhost:8000/api/post")
-    //         .then((res) => {
-    //             setAllPost(res.data)
-    //             console.log(res.data)
-    //         })
-    //         .catch((err) => console.log(err))
-    // }, []);
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/post")
+            .then((res) => {
+                setAllPost(res.data)
+                console.log(res.data)
+            })
+            .catch((err) => console.log(err))
+    }, []);
     
     return (
         <>
@@ -112,6 +104,12 @@ const ProfilePage = (props) => {
                     <h1 className="profilepage__user">{getUSer.fname} {getUSer.lname}</h1>
                     <p>{getUSer.about}</p>
                     <p><Link to={`/edit/${userId}`} className="top_button">Edit Profile</Link></p>
+
+                    <p>{avatar}</p>
+                    <h1 className="profilepage__user">{name}</h1>
+                    <p>{about}</p>
+                    <p><Link to={'/EditProfile'} className="top_button">Edit Profile</Link></p>
+
                 </div>
                 <form className="description__post" onSubmit={onSubmitHandler}>
                     <textarea
